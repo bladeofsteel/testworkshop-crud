@@ -1,0 +1,21 @@
+# Codeception Test Suite Configuration
+#
+# Suite for functional tests
+# Emulate web requests and make application process them
+# Include one of framework modules (Symfony2, Yii2, Laravel5) to use it
+# Remove this suite if you don't use frameworks
+
+actor: FunctionalTester
+modules:
+    enabled:
+        - PhpBrowser:
+              url: http://localhost:8080
+              timeout: 120
+        - Db:
+              dsn: "mysql:host=mysql;dbname=testworkshop;charset=utf8"
+              user: root
+              password:
+              dump: "tests/_data/dump.sql"
+              populate: true
+              cleanup: true
+        - \Helper\Functional
